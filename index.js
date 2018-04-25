@@ -9,7 +9,9 @@ const stopButton = document.querySelector('#stop');
     function populateVoices(){ //to give you voice choices
       voices = this.getVoices(); //https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis/getVoices
       //console.log(voices);
-      const voiceOptions = voices.map(voice => `<option value="${voice.name}">${voice.name} (${voice.lang})</option>`).join('');
+      const voiceOptions = voices
+                          //.filter(voice => voice.lang.includes('en')) if you want only english versions.
+                            .map(voice => `<option value="${voice.name}">${voice.name} (${voice.lang})</option>`).join('');
       voicesDropdown.innerHTML = voiceOptions 
     }
 
